@@ -19,6 +19,11 @@ export function post(callback) {
     color: "bada55",
     age: 40,
     mythology: "KEA",
+    alignment: "evil++",
+    texture: "Scales",
+    horns: true,
+    species: "Three headed beasts",
+    abilities: ["flying", "fire breathing", "acid breath"],
   };
 
   const postData = JSON.stringify(data);
@@ -34,7 +39,6 @@ export function post(callback) {
 }
 
 export function deleteIt(id, evt) {
-  //evt.target.parentElement.remove();
   fetch(endpoint + "/" + id, {
     method: "delete",
     headers,
