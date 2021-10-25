@@ -68,4 +68,29 @@ function deleteIt(id) {
     .then((res) => res.json())
     .then((data) => console.log(data));
 }
+
+function put(id) {
+  const data = {
+    name: "Dannie " + Math.random(),
+    color: "deeppink",
+    age: 40,
+    mythology: "KEA",
+  };
+  let postData = JSON.stringify(data);
+
+  fetch(
+    "https://frontendspring21-b266.restdb.io/rest/fantasty-creatures/" + id,
+    {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        "x-apikey": "614d91cfdfa7346e2f969003",
+        "cache-control": "no-cache",
+      },
+      body: postData,
+    }
+  )
+    .then((d) => d.json())
+    .then((t) => console.log(t));
+}
 get();
