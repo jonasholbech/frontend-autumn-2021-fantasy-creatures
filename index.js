@@ -10,6 +10,7 @@ function get() {
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
       showCreatures(data);
     });
 }
@@ -21,6 +22,9 @@ function showCreatures(creatures) {
     const copy = template.cloneNode(true);
     copy.querySelector("h2").textContent = creature.name;
     copy.querySelector(".color").textContent = creature.color;
+    copy
+      .querySelector("button")
+      .addEventListener("click", () => deleteIt(creature._id));
     document.querySelector("main").appendChild(copy);
   });
 }
@@ -47,5 +51,21 @@ function post() {
     .then((data) => {
       get();
     });
+}
+
+function deleteIt(id) {
+  fetch(
+    "https://frontendspring21-b266.restdb.io/rest/fantasty-creatures/" + id,
+    {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        "x-apikey": "614d91cfdfa7346e2f969003",
+        "cache-control": "no-cache",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 }
 get();
