@@ -4,32 +4,260 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Fantasy Creature Form</title>
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <main></main>
+    <header>
+      <div class="content">
+        <h1>The Frontend Elective's list of <span>Fantasy Creatures</span>.</h1>
+        <p>
+          We categorize all our fantasy creatures so you are able to find just
+          what you’re looking for.
+        </p>
+        <a href="#main">Add Creature</a>
+      </div>
+      <figure class="grid">
+        <img
+          src="https://images.unsplash.com/photo-1579972668140-f7da53ccc2a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1071&q=80"
+          alt=""
+        />
+        <img
+          src="https://images.unsplash.com/photo-1530090382228-7195e08d7a75?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1054&q=80"
+          alt=""
+        />
+        <img
+          src="https://images.unsplash.com/photo-1550100136-e092101726f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80"
+          alt=""
+        />
+      </figure>
+    </header>
+
+    <main id="main">
+      <section>
+        <form>
+          <div class="form-group">
+            <label for="name"
+              >Name
+              <span class="hint">Enter a creature name</span>
+            </label>
+            <input id="name" type="text" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="color"
+              >Color
+              <span class="hint">Enter the creature color</span>
+            </label>
+            <input
+              list="colors"
+              id="color"
+              type="color"
+              name="creature_color"
+              required
+            />
+            <datalist id="colors">
+              <option value="#72f1b8"></option>
+              <option value="#f97e72"></option>
+              <option value="#ef8a37"></option>
+              <option value="#fb28a8"></option>
+              <option value="#5000ca"></option>
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label for="age"
+              >Age
+              <span class="hint">Enter the age of the creature</span>
+            </label>
+            <div class="input-group">
+              <input
+                type="number"
+                id="age"
+                pattern="[0-9]{,3}"
+                name="age"
+                inputmode="numeric"
+                required
+              />
+              <span>years old</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mythology"
+              >Mythology
+              <span class="hint">Select Mythology</span>
+            </label>
+            <input
+              list="myths"
+              type="text"
+              id="mythology"
+              name="mythology"
+              required
+            />
+
+            <datalist id="myths">
+              <option value="KEA"></option>
+              <option value="MMD"></option>
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label for="genre">
+              Species
+              <span class="hint">Enter species</span>
+            </label>
+            <input type="text" id="genre" name="species" />
+          </div>
+
+          <fieldset class="textue">
+            <legend>Texture</legend>
+            <span class="hint">Which textures does it have?</span>
+            <ul role="list" class="controls">
+              <li>
+                <label for="scale">
+                  <input
+                    id="scale"
+                    type="checkbox"
+                    name="textue"
+                    value="scale"
+                  />
+                  Scale
+                </label>
+              </li>
+              <li>
+                <label for="fur">
+                  <input id="fur" type="checkbox" name="textue" value="fur" />
+                  Fur
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+
+          <fieldset class="horns">
+            <legend>Horns</legend>
+            <span class="hint">Does the creature have horns?</span>
+            <ul role="list" class="controls">
+              <li>
+                <label for="yes">
+                  <input
+                    id="yes"
+                    type="radio"
+                    name="horn"
+                    value="yes"
+                    checked
+                  />
+                  Yes
+                </label>
+              </li>
+              <li>
+                <label for="no">
+                  <input id="no" type="radio" name="horn" value="no" />
+                  No
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+
+          <div class="form-group range">
+            <label for="alignment">Alignment</label>
+            <div class="range-wrap">
+              <input
+                type="range"
+                step=".01"
+                min="0"
+                max="1"
+                value=".5"
+                id="alignment"
+                name="alignment"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="abilities">
+              Abilities
+              <span class="hint">Enter one ability per line</span>
+            </label>
+            <textarea name="abilities" id="abilities" required></textarea>
+          </div>
+
+          <button data-add class="btn">Add creature</button>
+        </form>
+      </section>
+      <div id="cards"></div>
+    </main>
     <template>
-      <article>
-        <h2>NAME</h2>
-        <h3><span data-years></span> years - <span data-mythology></span></h3>
-        <div class="color"></div>
+      <article class="card">
+        <header>
+          <h2>NAME</h2>
+          <p><span data-years></span> years - <span data-mythology></span></p>
+          <button class="delete-btn" data-delete>
+            <span class="visually-hidden">Delete game</span>
+            <svg aria-hidden="true" width="40" height="40">
+              <use href="#delete" />
+            </svg>
+          </button>
+        </header>
         <dl>
-          <dt>Alignment</dt>
-          <dd data-alignment></dd>
-          <dt>Texture</dt>
-          <dd data-texture></dd>
-          <dt>Horns</dt>
-          <dd data-horns></dd>
-          <dt>Species</dt>
-          <dd data-species></dd>
+          <div>
+            <dt>Alignment</dt>
+            <dd data-alignment></dd>
+          </div>
+          <div>
+            <dt>Texture</dt>
+            <dd data-texture></dd>
+          </div>
+          <div>
+            <dt>Horns</dt>
+            <dd data-horns></dd>
+          </div>
+          <div>
+            <dt>Species</dt>
+            <dd data-species></dd>
+          </div>
         </dl>
-        <h4>Abilities</h4>
-        <ol></ol>
-        <button>Delete me</button>
+
+        <ol aria-label="Abilities"></ol>
+        <!-- <button data-delete>Delete me</button> -->
       </article>
     </template>
-    <button>Add another</button>
+
+    <!-- SVG ICONS -->
+    <svg style="display: none">
+      <symbol
+        id="delete"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <title>Delete button</title>
+        <!-- <circle
+          stroke="var(--circle-stroke, currentColor)"
+          cx="12"
+          cy="12"
+          r="10"
+        ></circle> -->
+        <line
+          stroke="var(--line-stroke, currentColor)"
+          x1="15"
+          y1="9"
+          x2="9"
+          y2="15"
+        ></line>
+        <line
+          stroke="var(--line-stroke, currentColor)"
+          x1="9"
+          y1="9"
+          x2="15"
+          y2="15"
+        ></line>
+      </symbol>
+    </svg>
+
     <script type="module" src="index.js"></script>
   </body>
 </html>

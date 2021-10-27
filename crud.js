@@ -8,15 +8,15 @@ export function get(callback) {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      document.querySelector("main").innerHTML = "";
+      document.querySelector("#cards").innerHTML = "";
       data.forEach(callback);
     });
 }
 
 export function post(callback) {
   const data = {
-    name: "Jonnie " + Math.random(),
-    color: "bada55",
+    name: "Jonnie " + Math.random().toFixed(2),
+    color: "#5000ca",
     age: 40,
     mythology: "KEA",
     alignment: "evil++",
@@ -45,7 +45,7 @@ export function deleteIt(id, evt) {
   })
     .then((res) => res.json())
     .then((data) => {
-      evt.target.parentElement.remove();
+      evt.target.closest("article").remove();
     });
 }
 

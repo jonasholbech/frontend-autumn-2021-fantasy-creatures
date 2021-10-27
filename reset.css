@@ -1,0 +1,356 @@
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "pnum";
+  font-feature-settings: "pnum";
+  font-variant-numeric: proportional-nums;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/*:focus {
+outline: 2px dotted black;
+outline-offset: 2px;
+}
+:focus-visible {
+outline: 2px solid black;
+outline-offset: 2px;
+}*/
+:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #000, 0 0 0 4px #fff;
+}
+
+/*:focus {
+outline: max(1px, 0.1em) dashed currentColor;
+outline-offset: -0.25em;
+}
+
+@supports selector(:focus-visible) {
+:focus {
+outline: none;
+}
+
+:focus-visible {
+outline: max(1px, 0.1em) dashed currentColor;
+outline-offset: -0.25em;
+}
+}*/
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+p,
+pre,
+blockquote,
+figure,
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+/*h1 {
+max-inline-size: 15ch;
+}
+
+h2,
+h3 {
+max-inline-size: 30ch;
+}
+
+p {
+max-inline-size: 60ch;
+}*/
+
+/*ul[class],
+ol[class] {
+list-style: none;
+}*/
+
+ul:where([role="list"]),
+ol:where([role="list"]) {
+  list-style: none;
+}
+
+/* https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html */
+.plain-list {
+  list-style: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");
+  padding-inline-start: 0;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+@supports not (font-variant-position: super) {
+  sub,
+  sup {
+    position: relative;
+    vertical-align: baseline;
+    font-size: 0.7em;
+  }
+  sub {
+    inset-block-end: -0.25em;
+  }
+  sup {
+    inset-block-start: -0.5em;
+  }
+}
+
+@supports (font-variant-position: super) {
+  sub,
+  sup {
+    vertical-align: baseline;
+    font-size: 1em;
+  }
+  sup {
+    font-variant-position: super;
+  }
+  sub {
+    font-variant-position: sub;
+  }
+}
+
+:where(a:not([class])) {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  transition: color 0.2s;
+}
+
+@media (pointer: fine) and (hover: hover) {
+  :where(a:not([class]):hover),
+  :where(a:not([class]):focus) {
+    text-decoration: underline;
+  }
+
+  :where(a:hover) {
+    color: #0056b3;
+  }
+}
+
+:where(a:not([href]):not([tabindex])) {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(a:not([href]):not([tabindex]):focus),
+:where(a:not([href]):not([tabindex]):hover) {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(a:not([href]):not([tabindex]):focus) {
+  outline: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+input,
+textarea,
+select,
+button {
+  /*-webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;*/
+  border-radius: 0;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  font-size: max(1rem, 1em, 16px);
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+select::-webkit-input-placeholder {
+  line-height: normal;
+}
+
+input,
+textarea,
+button {
+  border: 1px solid gray;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  -webkit-appearance: listbox;
+  appearance: listbox;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
+::-webkit-search-decoration {
+  display: none;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+button {
+  /*padding: 0.75em 1em;
+  background-color: transparent;*/
+}
+
+button * {
+  pointer-events: none;
+}
+
+/*img,*/
+embed,
+iframe,
+object,
+video {
+  display: block;
+  max-inline-size: 100%;
+}
+
+/*img {
+height: auto;
+width: 100%;
+vertical-align: middle;
+border-style: none;
+}*/
+
+/* https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-inline-size: 100%;
+  vertical-align: middle;
+}
+img[width] {
+  inline-size: auto; /* Defer to max-width */
+}
+img[width][height] {
+  block-size: auto; /* Preserve aspect ratio */
+}
+
+table {
+  table-layout: fixed;
+  inline-size: 100%;
+  border-collapse: collapse;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+[aria-hidden="false"][hidden] {
+  display: initial;
+}
+[aria-hidden="false"][hidden]:not(:focus) {
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(100%);
+  position: absolute;
+}
+
+noscript {
+  display: block;
+  margin-block: 1em;
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  block-size: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
