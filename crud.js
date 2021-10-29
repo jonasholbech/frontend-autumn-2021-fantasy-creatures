@@ -13,19 +13,7 @@ export function get(callback) {
     });
 }
 
-export function post(callback) {
-  const data = {
-    name: "Jonnie " + Math.random().toFixed(2),
-    color: "#5000ca",
-    age: 40,
-    mythology: "KEA",
-    alignment: "evil++",
-    texture: "Scales",
-    horns: true,
-    species: "Three headed beasts",
-    abilities: ["flying", "fire breathing", "acid breath"],
-  };
-
+export function post(data, callback) {
   const postData = JSON.stringify(data);
   fetch(endpoint, {
     method: "post",

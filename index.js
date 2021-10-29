@@ -1,10 +1,6 @@
 import { get, post, put, deleteIt } from "./crud.js";
 import { rangeColorChanger, autoExpandTextarea } from "./utils.js";
 
-document.querySelector("button[data-add]").addEventListener("click", () => {
-  post(showCreature);
-});
-
 function showCreature(creature) {
   const template = document.querySelector("template").content;
   const copy = template.cloneNode(true);
@@ -41,3 +37,31 @@ const data = {
 
 rangeColorChanger();
 autoExpandTextarea();
+
+const form = document.querySelector("form");
+form.setAttribute("novalidate", true);
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (form.checkValidity()) {
+    let horns = true;
+    if (form.elements.horns.value === "no") {
+      horns = false;
+    }
+    const data = {
+      name: form.elements.name.value,
+      color: form.elements.color.value,
+      age: form.elements.age.value,
+      mythology: form.elements.mythology.value,
+      alignment: form.elements.alignment.value,
+      texture: form.elements.texture.value,
+      horns: horns,
+      species: form.elements.species.value,
+      abilities: form.elements.abilities.value.split("\n"),
+    };
+    console.log(data);
+    post(data, showCreature);
+  } else {
+    form.reportValidity();
+  }
+});
