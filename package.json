@@ -1,0 +1,25 @@
+{
+  "name": "frontend-autumn-2021-fantasy-creatures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonasholbech/frontend-autumn-2021-fantasy-creatures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonasholbech/frontend-autumn-2021-fantasy-creatures/issues"
+  },
+  "homepage": "https://github.com/jonasholbech/frontend-autumn-2021-fantasy-creatures#readme",
+  "devDependencies": {
+    "vite": "^2.6.13"
+  }
+}

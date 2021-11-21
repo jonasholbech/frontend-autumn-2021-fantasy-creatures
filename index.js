@@ -53,7 +53,7 @@ form.addEventListener("submit", (e) => {
       color: form.elements.color.value,
       age: form.elements.age.value,
       mythology: form.elements.mythology.value,
-      alignment: form.elements.alignment.value,
+      alignment: form.elements.alignment.valueAsNumber,
       texture: form.elements.texture.value,
       horns: horns,
       species: form.elements.species.value,
